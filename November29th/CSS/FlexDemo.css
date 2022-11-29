@@ -4,6 +4,8 @@ h2{
     background-color: grey;
     margin-bottom: -1px;
 }
+
+
 @media (max-width: 600px) {
     section {
       -webkit-flex-direction: column;
