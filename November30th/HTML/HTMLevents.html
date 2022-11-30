@@ -7,7 +7,6 @@
     <title>Document</title>
 
 
-    <!-- <script src="../JS/LoginForm.js"></script> -->
 
 </head>
 <body onmousemove="myMouseMove(e)"  id="abc">
@@ -33,7 +32,31 @@
     </p>
 
 
+    <audio src="../../November28th/HTML/Oo Antava..Oo Oo Antava song.mp3" controls id="audioCheck"></audio>
+
+<br>
+    <video src="" controls id="videoCheck"></video>
+
+
+
+
     <script>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         let f=document.getElementById("para");
         f.addEventListener("click",paraC,true);
@@ -79,6 +102,49 @@ let c=document.getElementById("mouseMove");
         function blurB(){
             document.getElementById("name").style.backgroundColor="green";
         }
+
+
+
+
+
+
+
+        let aud=document.getElementById("audioCheck");
+
+        aud.addEventListener("error",errorH,true);
+        aud.addEventListener("canplay",canplayP,true);
+
+        function errorH(){
+            alert("Error Occured");
+        }
+
+        function canplayP(){
+            aud.style.backgroundColor="green";
+            aud.style.border="1px solid red";
+
+        }
+
+            let vid=document.getElementById("audioCheck");
+
+            vid.addEventListener("error",errorHV,true);
+            vid.addEventListener("canplay",canplayVP,true);
+
+            function errorHV(){
+            alert("Error Occured");
+                }
+
+            function canplayPV(){
+                alert("Can Play");
+
+            }
+
+
+
+
+
+
+
+
 
 
 
