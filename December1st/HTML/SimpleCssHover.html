@@ -10,6 +10,20 @@
         body{
             color: blue;
         }
+        ul li:last-child{
+            color: red;
+        }
+
+        p::before{
+            content: 'THis is para';
+            color: blue;
+        }
+
+    
+
+        p::first-line{
+            color: red;
+        }
 
         h1{
             color: yellow;
@@ -23,7 +37,7 @@
             font-style: italic;
         }
         p{
-            writing-mode: vertical-lr;
+            /* writing-mode: vertical-lr; */
         }
 
     </style>
@@ -39,6 +53,20 @@
 
 
     <p>this is a new para</p>
+
+
+    <ul>
+        <li>Apple</li>
+        <li>mango</li>
+        <li>Strwabery</li>
+    </ul>
     
+
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus adipisci corrupti, repudiandae amet explicabo veniam. Facilis nesciunt culpa
+         minima distinctio aperiam harum rem? Architecto 
+        ullam vero fugiat debitis, quasi cum!
+    </p>
+
 </body>
 </html>
