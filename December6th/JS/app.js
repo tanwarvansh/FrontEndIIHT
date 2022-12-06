@@ -16,6 +16,22 @@ const employee ={
 }
 
 
+    for(let i in employee){
+
+        if(i==="department"){
+            console.log("Department Details");
+            for(let j in employee[i]){
+                console.log(`${j}:${employee[i][j]}`);
+            }
+        }else{
+            console.log(`${i}:${employee[i]}`);
+        }
+        
+    }
+
+
+
+
 console.log(employee);
 
 
