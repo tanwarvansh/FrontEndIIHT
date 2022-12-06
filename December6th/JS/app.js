@@ -19,13 +19,13 @@ const employee ={
 console.log(employee);
 
 
-console.log(employee.employeeId);
-console.log(employee.name);
-console.log(employee.department.id);
-console.log(employee.department.name);
-console.log(employee.salary);
-console.log(employee.dateOfJoining);
-console.log(employee.getNumberOfServiceYears());
+// console.log(employee.employeeId);
+// console.log(employee.name);
+// console.log(employee.department.id);
+// console.log(employee.department.name);
+// console.log(employee.salary);
+// console.log(employee.dateOfJoining);
+// console.log(employee.getNumberOfServiceYears());
 
 // console.clear();
 
