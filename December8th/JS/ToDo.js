@@ -50,7 +50,7 @@ class UI{
 
 
     clearTasks(){
-        document.getElementById('result').innerHTML="";
+        document.getElementById('search-list').innerHTML="";
     }
 
 
@@ -145,6 +145,8 @@ function fn(){
     Store.clearTasks();
     const ui=new UI();
     ui.clearTasks();
+    Store.displayTasks();
+    
 }
 
 
