@@ -49,6 +49,11 @@ class EV extends Car{
     
         this.batterylife  =batterylife;
     }
+
+    toString(){
+        return `id:${this.id} Model${this.model} Dealer${this.dealer}
+        Price:${this.price} BatteryLife:${this.batterylife}`;
+    }
     
     disp(){
     
@@ -63,11 +68,11 @@ let ev= new EV(111,'nexon','tata',1500000,400);
 ev.disp;
 
 
-class Button{
+// class Button{
 
-   constructor(val){
-    this.val=val;
-   }
+//    constructor(val){
+//     this.val=val;
+//    }
  //instead of creating regular function , where you will lose the reference to "this" 
 
  //use arrow function
@@ -77,18 +82,18 @@ class Button{
 let click = function(){};
  */
 
-   click=()=>{
-    console.log('inside the click of Button class');
-    console.log(this.val);
-   }
+//    click=()=>{
+//     console.log('inside the click of Button class');
+//     console.log(this.val);
+//    }
 
 
 
-}
+// }
 
-let btnObj= new Button('click1');
+// let btnObj= new Button('click1');
 //invoking click thru btn
-setTimeout(btnObj.click,1000);
+// setTimeout(btnObj.click,1000);
 
 
 //create a employee class 
@@ -118,6 +123,59 @@ console.log(evCars);
 
 evCars.splice(1,1);
 console.log(evCars);
+
+
+let button=document.getElementById("submit");
+
+button.addEventListener("submit",fn,true);
+
+localStorage.setItem("val",JSON.stringify(evCars));
+
+
+function fn(e){
+    e.preventDefault();
+    let id=document.getElementById("id").value;
+    let model=document.getElementById("model").value;
+    let dealer=document.getElementById("dealer").value;
+    let price=document.getElementById("price").value;
+    let batteryLife=document.getElementById("batteryLife").value;
+
+
+    let evv=new EV(id,model,dealer,price,batteryLife);
+
+    let evCars=JSON.parse(localStorage.getItem("val"));
+
+    console.log(evCars);
+
+    evCars.push(evv);
+
+
+localStorage.setItem("val",JSON.stringify(evCars));
+button.reset();
+
+console.log(evCars);
+print();
+
+
+
+}
+
+
+function print(){
+
+    let evCars=JSON.parse(localStorage.getItem("val"));
+    
+   let list= document.getElementById("list");
+   list.innerHTML="";
+
+    for(let i=0;i<evCars.length;i++){
+        let li=document.createElement("li");
+        li.innerHTML=JSON.stringify(evCars[i]);
+        list.appendChild(li);
+
+    }
+
+}
 
 
 
