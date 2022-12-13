@@ -38,7 +38,7 @@ customElements.define(
         let div=document.createElement('div');
         div.innerHTML=new Date(date);
         templateContent.appendChild(div);
-        
+      
   
         const shadowRoot = this.attachShadow({ mode: "open" });
         shadowRoot.appendChild(templateContent.cloneNode(true));
