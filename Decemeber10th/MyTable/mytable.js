@@ -67,3 +67,42 @@ sub.onclick = function(){
     document.body.appendChild(mytable);
 
 }
+
+
+
+    customElements.define("my-temp",
+        class extends HTMLElement{
+            constructor(){
+                super();
+                let temp=document.getElementById('template');
+                let cont=temp.content;
+
+                let r=document.getElementById('row').value;
+                let c=document.getElementById('column').value;
+
+
+                for(let i=0;i<r;i++){
+                    let tr=document.createElement('tr');
+                    for(let j=0;j<c;j++){
+                        let td=document.createElement('td');
+                        td.innerHTML=i*j;
+                        td.style='background-color:red; border: 1px solid black; width:20px; height:20px';
+                        tr.appendChild(td);
+                    }
+                   
+                    cont.appendChild(tr);
+                }
+
+               
+
+
+       const shadowRoot = this.attachShadow({ mode: "open" });
+        shadowRoot.appendChild(cont.cloneNode(true));
+
+
+
+            }
+
+
+        }
+    );
