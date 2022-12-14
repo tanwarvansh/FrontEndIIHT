@@ -24,6 +24,7 @@ let sortedArr=employees.sort(
     }
 );
 console.log(sortedArr);
+console.log(employees);
 
 
 let button=document.getElementById("submit");
@@ -38,11 +39,16 @@ button.onclick=function(e){
 
     console.log(employees);
 }
+
+
+
+
 let sort=document.getElementById("sort");
 sort.onclick=function(e){
     e.preventDefault();
    
-    let table=document.createElement("table");
+    let table=document.createElement("tbody");
+    
     
 
     let tr=document.createElement('tr');
@@ -77,6 +83,10 @@ sort.onclick=function(e){
         
 
     }
+    
     table.style.border="1px solid black";
-    document.body.appendChild(table);
+    let ta=document.getElementById("result");
+    ta.innerHTML="";
+    ta.appendChild(table);
+    // document.body.appendChild(table);
 }
