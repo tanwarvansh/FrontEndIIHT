@@ -14,15 +14,7 @@ let ravi1=new Employee(4,"ravi",25000);
 
 let employees=[vansh,ravi,abhinav,ravi1];
 
-let sortedArr=employees.sort(
-    (a,b)=>{
-        if(a.name===b.name){
-            return a.salary < b.salary?-1:1;
-        }else{
-            return a.name>b.name?1:-1;
-        }
-    }
-);
+
 console.log(sortedArr);
 console.log(employees);
 
