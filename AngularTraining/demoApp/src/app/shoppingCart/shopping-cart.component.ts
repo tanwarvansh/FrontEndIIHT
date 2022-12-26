@@ -60,7 +60,7 @@ minus(pro:Product){
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    console.log(this.product1);
+    // console.log(this.product1);
 
     if(this.product1.name=="")
         return;

@@ -11,6 +11,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { ProductComponent } from './Product/product.component';
 import { StarComponent } from './star/star.component';
 import { ShoppingCartComponent } from './shoppingCart/shopping-cart.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -30,7 +31,8 @@ import { ShoppingCartComponent } from './shoppingCart/shopping-cart.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
