@@ -5,6 +5,7 @@ export interface IEvent{
     time:string;
     price:number;
     imageUrl:string;
+
    location:{
     address:string;
     city:string;

@@ -15,7 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventBootComponent } from './event-bootcamp/event-boot.component';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientInMemoryWebApiModule, InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DBServie } from './shared/dataBaseService';
 
 
@@ -42,7 +42,7 @@ import { DBServie } from './shared/dataBaseService';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    InMemoryWebApiModule.forRoot(DBServie)
+    HttpClientInMemoryWebApiModule.forRoot(DBServie),
   ],
   providers: [],
   bootstrap: [AppComponent]

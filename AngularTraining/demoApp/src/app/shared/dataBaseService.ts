@@ -10,6 +10,7 @@ import { IEvent } from "../event-bootcamp/event";
 export class DBServie implements InMemoryDbService {
 
     createDb() {
+        
        const events: IEvent[]=[
         {
             "id":"101",
@@ -93,7 +94,7 @@ export class DBServie implements InMemoryDbService {
         }
        ]
 
-       return events;
+       return {events};
 
        
     }

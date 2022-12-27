@@ -7,10 +7,9 @@ import { IEvent } from "../event-bootcamp/event";
 @Injectable({
     providedIn:"root"
 })
-
 export class EventService{
     constructor(private http:HttpClient){};
-    private url = 'assets/events.json'
+    private url = "api/events";
 
     getEvents():Observable<IEvent[]> {
         return this.http.get<IEvent[]>(this.url);
