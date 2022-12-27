@@ -71,6 +71,14 @@ outputEvent(product:Product){
 }
 
 
+newProduct():void{
+  this.productService.changeSelectedProduct(this.productService.newProduct());
+}
+
+productSelected(product:Product):void{
+  this.productService.changeSelectedProduct(product);
+}
+
 
 }
 

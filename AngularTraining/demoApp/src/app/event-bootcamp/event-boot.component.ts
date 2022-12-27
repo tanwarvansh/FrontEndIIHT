@@ -22,13 +22,55 @@ subs!:Subscription;
     this.subs=this.eventService.getEvents().subscribe(
 
       (response:IEvent[]) => {
+
         this.eventList = (response);
         this.filteredList=response;    
         console.log((this.eventList));
 
       }
     );
+
+
+    
   
+  }
+
+  event:IEvent={
+    id:"100",
+    name:'abc',
+    date:"",
+    time:"",
+    price:200,
+    imageUrl:"",
+    location:{
+      address:"abcc",
+      city:"abccc",
+      country:"india"
+    },
+    session:[]
+
+  }
+
+
+  addData(){
+    console.log(this.eventService.addEvent(this.event));
+    this.eventList.push(this.event);
+      
+  }
+
+  showData(){
+
+    this.subs=this.eventService.getEvents().subscribe(
+
+      (response:IEvent[]) => {
+
+        this.eventList = (response);
+        this.filteredList=response;    
+        console.log((this.eventList));
+
+      }
+    );
+
   }
 
  
