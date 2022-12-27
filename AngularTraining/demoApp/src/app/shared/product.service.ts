@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ProductComponent } from "src/app/Product/product.component";
+
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 
@@ -10,10 +10,11 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ProductService{
     constructor(private http:HttpClient){}
-     url:string='../api/product.json';
+     url:string='assets/products.json';
 
     getProduct():Observable<Product[]>{
-        return (this.http.get<Product[]>(`${this.url}`))
+      return this.http.get<Product[]>(`${this.url}`);
+     
     }
 
 }

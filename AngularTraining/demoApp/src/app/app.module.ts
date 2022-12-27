@@ -12,12 +12,17 @@ import { ProductComponent } from './Product/product.component';
 import { StarComponent } from './star/star.component';
 import { ShoppingCartComponent } from './shoppingCart/shopping-cart.component';
 import {HttpClientModule} from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EventBootComponent } from './event-bootcamp/event-boot.component';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { DBServie } from './shared/dataBaseService';
 
 
 
 
 @NgModule({
-  declarations: [
+  declarations:[
     AppComponent,
     PentHouseComponent2,
     WelcomeComponent,
@@ -26,13 +31,18 @@ import {HttpClientModule} from '@angular/common/http';
    ProductComponent,
    StarComponent,
    ShoppingCartComponent,
+      NavbarComponent,
+    EventBootComponent
+
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    InMemoryWebApiModule.forRoot(DBServie)
   ],
   providers: [],
   bootstrap: [AppComponent]

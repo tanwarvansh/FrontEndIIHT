@@ -1,4 +1,5 @@
-[{
+[
+  {
     "id":1,
     "name":"Gas Stove",
     "price":"4000",
@@ -28,7 +29,7 @@
     "price":"1500",
     "imageUrl":"../../assets/mop.webp",
     "rating":5,
-    "category":"Category.HouseHold"
+    "category":"Category.Electric"
   }
    ,{
     "id":5,
@@ -37,4 +38,5 @@
     "imageUrl":"../../assets/chimney.jpeg",
     "rating":3.5,
     "category":"Category.Kitchen"
-  }]
+  }
+]
