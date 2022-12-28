@@ -17,6 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventBootComponent } from './event-bootcamp/event-boot.component';
 import { HttpClientInMemoryWebApiModule, InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DBServie } from './shared/dataBaseService';
+import { ProductAddComponent } from './Product/product-add.component';
+import { RepeatDataPipe } from './pipe/repeat.pipe';
 
 
 
@@ -32,7 +34,10 @@ import { DBServie } from './shared/dataBaseService';
    StarComponent,
    ShoppingCartComponent,
       NavbarComponent,
-    EventBootComponent
+    EventBootComponent,
+    ProductAddComponent,
+    RepeatDataPipe
+   
 
     
   ],

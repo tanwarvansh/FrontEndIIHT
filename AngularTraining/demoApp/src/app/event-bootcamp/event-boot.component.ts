@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TitleStrategy } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EventService } from '../shared/events.service';
+
 import { IEvent } from "./event";
 
 @Component({
@@ -52,11 +53,11 @@ subs!:Subscription;
   }
 
 
-  addData(){
-    console.log(this.eventService.addEvent(this.event));
-    this.eventList.push(this.event);
+  // addData(){
+  //   console.log(this.eventService.addEvent(this.event));
+  //   this.eventList.push(this.event);
       
-  }
+  // }
 
   showData(){
 

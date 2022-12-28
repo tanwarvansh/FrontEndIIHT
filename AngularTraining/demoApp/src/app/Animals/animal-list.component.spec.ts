@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AnimalListComponent } from './animal-list.component';
@@ -8,7 +9,8 @@ describe('AnimalListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnimalListComponent ]
+      declarations: [ AnimalListComponent ],
+      schemas:[NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 
