@@ -44,6 +44,17 @@ describe('WelcomeComponent', () => {
 
   });
 
+  it('should show name twice',()=>{
+    const titleNative=fixture.nativeElement;
+    const title=titleNative.querySelector("#pipeTest");
 
+    expect(title.textContent).toEqual("vanshvansh");
+  })
+
+
+ 
 
 });
+
+
+

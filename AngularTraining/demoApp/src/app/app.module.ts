@@ -19,6 +19,9 @@ import { HttpClientInMemoryWebApiModule, InMemoryWebApiModule } from 'angular-in
 import { DBServie } from './shared/dataBaseService';
 import { ProductAddComponent } from './Product/product-add.component';
 import { RepeatDataPipe } from './pipe/repeat.pipe';
+import { EmployeeComponent } from './employee/employee.component';
+import { GetValidatorDirective } from './employee/get-validator.directive';
+import { TrusteeComponent } from './Trustee/trustee/trustee.component';
 
 
 
@@ -36,7 +39,10 @@ import { RepeatDataPipe } from './pipe/repeat.pipe';
       NavbarComponent,
     EventBootComponent,
     ProductAddComponent,
-    RepeatDataPipe
+    RepeatDataPipe,
+    EmployeeComponent,
+    GetValidatorDirective,
+    TrusteeComponent
    
 
     

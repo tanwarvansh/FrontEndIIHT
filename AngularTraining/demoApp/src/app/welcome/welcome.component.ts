@@ -10,6 +10,7 @@ export class WelcomeComponent {
   welcomeMessage:string="Welcome to Our Application";
   data: number=3;
   title:string="Welcome";
+  name:string="vansh";
   constructor(private loggingService:LoggingServie){};
 
 
