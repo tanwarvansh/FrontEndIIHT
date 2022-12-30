@@ -23,13 +23,13 @@
     <br>
     <p>
         <label for="gender">Gender:</label>
-        <input type="radio" name="gender" id="gender" checked>Male
-        <input type="radio" name="gender" id="gender" >Female
+        <input type="radio" name="gender" id="gender" [checked]="trust.gender=='Male'">Male
+        <input type="radio" name="gender" id="gender"[checked]="trust.gender=='Female'" >Female
     </p>
     <p>
         <label for="country">Country:</label>
-        <select #country name="country" id="country" required>
-            <option [ngValue]="c.id" *ngFor="let c of countries">{{c.name}}</option>
+        <select #country name="country" id="country" required >
+            <option [selected]="c.name==trust.countryOfResidence" [ngValue]="c.id" *ngFor="let c of countries">{{c.name}}</option>
         </select>
     </p>
 

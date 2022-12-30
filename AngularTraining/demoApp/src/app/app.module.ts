@@ -7,7 +7,7 @@ import { PentHouseComponent2 } from './pent-house/pent-house.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FlagListComponent } from './flats/flag-list.component';
 import { AnimalListComponent } from './Animals/animal-list.component';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './Product/product.component';
 import { StarComponent } from './star/star.component';
 import { ShoppingCartComponent } from './shoppingCart/shopping-cart.component';
@@ -22,6 +22,8 @@ import { RepeatDataPipe } from './pipe/repeat.pipe';
 import { EmployeeComponent } from './employee/employee.component';
 import { GetValidatorDirective } from './employee/get-validator.directive';
 import { TrusteeComponent } from './Trustee/trustee/trustee.component';
+import { ReactiveFormExampleComponent } from './reactive-form-example/reactive-form-example.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -42,7 +44,8 @@ import { TrusteeComponent } from './Trustee/trustee/trustee.component';
     RepeatDataPipe,
     EmployeeComponent,
     GetValidatorDirective,
-    TrusteeComponent
+    TrusteeComponent,
+    ReactiveFormExampleComponent
    
 
     
@@ -53,9 +56,10 @@ import { TrusteeComponent } from './Trustee/trustee/trustee.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
+    ReactiveFormsModule,
     HttpClientInMemoryWebApiModule.forRoot(DBServie),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
