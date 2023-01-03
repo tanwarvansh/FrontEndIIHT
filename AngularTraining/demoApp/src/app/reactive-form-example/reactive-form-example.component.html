@@ -76,9 +76,27 @@
         <div *ngIf="state.errors?.['minlength']">Min Length should be 5</div>
     </div>
     </div>
+  </div>
 
 
-</div>
+
+    <div formArrayName="publishers">
+        <div *ngFor="let publisher of publishers().controls; let publisherIndex=index">
+          <div [formGroupName]="publisherIndex">
+            {{publisherIndex}} Publishers:
+            <input type="text" name="name" id="name" placeholder="Name" formControlName="name">
+            <input type="tel" name="phn" id="phn" placeholder="Phone Number" formControlName="phn">
+            <button (click)="removePublisher(publisherIndex)">Remove Publisher</button>
+          </div>
+
+
+        </div>
+
+    </div>
+    <button type="button" (click)="addPublisher()">Add Publisher</button>
+
+
+
 
 
 

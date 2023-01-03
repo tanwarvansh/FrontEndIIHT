@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoggingServie } from 'src/app/shared/logging.service';
 import { ProductService } from 'src/app/shared/product.service';
 
@@ -14,12 +15,14 @@ export class ProductComponent implements OnInit {
   // productList=[];
   inp:string='';
 title:string='';
+href:string='';
 
 
-constructor(private productService:ProductService,private logginService:LoggingServie){}
+constructor(private productService:ProductService,private logginService:LoggingServie,private router:Router){}
 
 
 ngOnInit(): void {
+  this.href=this.router.url;
     this.getFuntion();
    
   }
@@ -63,6 +66,8 @@ productSend:Product={
 };
 
 
+
+
 outputEvent(product:Product){
   this.logginService.log(product);
   this.productSend=product;
@@ -73,6 +78,7 @@ outputEvent(product:Product){
 
 newProduct():void{
   this.productService.changeSelectedProduct(this.productService.newProduct());
+  this.router.navigate([this.href,'addProduct']);
 }
 
 productSelected(product:Product):void{
@@ -82,13 +88,13 @@ productSelected(product:Product):void{
 
 }
 
-enum Category{
-  Kitchen='kitchen',
-  Electric='electric',
-  HouseHold='houseHold'
+export enum Category{
+  Kitchen='Kitchen',
+  Electric='Electric',
+  HouseHold='HouseHold'
 }
 
-interface Product{
+export interface Product{
   id:number;
   name:string;
   price:string;

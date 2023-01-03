@@ -27,28 +27,38 @@
         </thead>
         <tbody *ngFor="let product of filteredList;">
             <tr>
-                <td (click)="productSelected(product)">{{product.id }}</td>
-                <td>{{product.name | uppercase}}</td>
+                <td >{{product.id }}</td>
+                <td (click)="productSelected(product)">{{product.name | uppercase}}</td>
                 <td>{{product.price | currency:'INR'}}</td>
                 <td><img src="{{product.imageUrl}}"></td>
                 <td> <app-star 
                     [rating]="product.rating"
                     ></app-star> </td>
                 <td>{{product.category}}</td>
-                <td> <button (click)="outputEvent(product)" >Add To Cart</button> </td>
+                <!-- <td> <button (click)="outputEvent(product)" >Add To Cart</button> </td> -->
             </tr>
         </tbody>
     </table>
 </div>
 
-<div class="shoppingCart">
+<!-- <div class="shoppingCart">
     <app-shopping-cart [product1]="productSend"></app-shopping-cart>
+</div> -->
+
+
+
 </div>
+<div class="card-footer">
+    <div class="col-md-4 text-right">
+      <button class="btn btn-primary"
+      (click)="newProduct()">Add a Product</button>
+
+    </div>
+  </div>
 
 
 
-
-</div>
+<router-outlet></router-outlet>
     
 </body>
 </html>

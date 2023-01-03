@@ -24,6 +24,19 @@ import { GetValidatorDirective } from './employee/get-validator.directive';
 import { TrusteeComponent } from './Trustee/trustee/trustee.component';
 import { ReactiveFormExampleComponent } from './reactive-form-example/reactive-form-example.component';
 import { DatePipe } from '@angular/common';
+import { EmployeeReactiveComponent } from './employee-reactive/employee-reactive.component';
+import { HomeComponent } from './home-component/home-component.component';
+import { DashBoardComponent } from './dash-board/dash-board.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EmpoyeeListComponent } from './employee/empoyee-list.component';
+import { EmployeeDetailsComponentComponent } from './employee/employee-details-component.component';
+import { EmployeeLeaveComponent } from './employee/employee-leave.component';
+import { EmployeeSuggestionsComponent } from './employee/employee-suggestions.component';
+import { ProductsShellComponent } from './products/products-shell.component';
+import { LoginComponent } from './user/login.component';
+import { MenuComponent } from './home-component/menu.component';
+import { ShellComponent } from './home-component/shell.component';
 
 
 
@@ -45,7 +58,20 @@ import { DatePipe } from '@angular/common';
     EmployeeComponent,
     GetValidatorDirective,
     TrusteeComponent,
-    ReactiveFormExampleComponent
+    ReactiveFormExampleComponent,
+    EmployeeReactiveComponent,
+    HomeComponent,
+    DashBoardComponent,
+    AboutUsComponent,
+    PageNotFoundComponent,
+    EmpoyeeListComponent,
+    EmployeeDetailsComponentComponent,
+    EmployeeLeaveComponent,
+    EmployeeSuggestionsComponent,
+    ProductsShellComponent,
+    LoginComponent,
+    MenuComponent,
+    ShellComponent
    
 
     

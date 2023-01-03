@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form-example',
@@ -11,30 +11,72 @@ export class ReactiveFormExampleComponent implements OnInit {
 
  dateOfPublishing:string|null;
   bookForm!:FormGroup;
-  constructor(formBuilder:FormBuilder,datepipe:DatePipe){
+
+
+
+  constructor(private formBuilder:FormBuilder,datepipe:DatePipe){
     const dateFormat="dd/mm/yyyy";
     this.dateOfPublishing=datepipe.transform(new Date().setDate(new Date().getDate()),dateFormat);
     
     
-    this.bookForm=formBuilder.group({
+   
+
+  }
+
+
+  ngOnInit(): void {
+
+    this.bookForm=this.formBuilder.group({
 
       id:['1',[Validators.required,Validators.max(100)]],
       title:['Elements',[Validators.required,Validators.minLength(5)]],
     
-      author:formBuilder.group({
+      author:this.formBuilder.group({
         name:['R.S. Agarwal',[Validators.required,Validators.minLength(5)]],
         email:['rsagarwal@gmail.com',[Validators.required]]
 
       }),
-      dateOf:["2022-02-02",[Validators.required]]
+      dateOf:["2022-02-02",[Validators.required]],
+      publishers:this.formBuilder.array([])
+
     })
 
 
+   
+  }
+
+  
 
 
+ 
 
+  newPublisher():FormGroup{
+    return this.formBuilder.group({
+      name:'',
+      phn:''
+    });
+  }
+
+  addPublisher(){
+    console.log('hello');
+    // let arr=this.bookForm.get('publishers') as FormArray;
+    // arr.push(this.newPublisher());
+    this.publishers().push(this.newPublisher())
 
   }
+
+  removePublisher(pubIndex:number){
+    let arr=this.bookForm.get('publishers') as FormArray;
+   arr.removeAt(pubIndex);
+
+  }
+
+
+  publishers():FormArray{
+    return this.bookForm.get('publishers') as FormArray;
+  }
+
+
 
   get id(){
     return this.bookForm.get('id');
@@ -56,10 +98,7 @@ export class ReactiveFormExampleComponent implements OnInit {
 
   
   
-  ngOnInit(): void {
-   
-  }
-
+  
 
 
 
