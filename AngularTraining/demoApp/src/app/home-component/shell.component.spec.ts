@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MenuComponent } from './menu.component';
 
 import { ShellComponent } from './shell.component';
 
@@ -8,7 +9,8 @@ describe('ShellComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShellComponent ]
+      declarations: [ ShellComponent ],
+      
     })
     .compileComponents();
 

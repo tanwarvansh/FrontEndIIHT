@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -9,15 +9,13 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 })
 export class ReactiveFormExampleComponent implements OnInit {
 
- dateOfPublishing:string|null;
+
   bookForm!:FormGroup;
 
 
 
-  constructor(private formBuilder:FormBuilder,datepipe:DatePipe){
-    const dateFormat="dd/mm/yyyy";
-    this.dateOfPublishing=datepipe.transform(new Date().setDate(new Date().getDate()),dateFormat);
-    
+  constructor(private formBuilder:FormBuilder){
+   
     
    
 
