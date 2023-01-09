@@ -37,7 +37,17 @@ import { ProductsShellComponent } from './products/products-shell.component';
 import { LoginComponent } from './user/login.component';
 import { MenuComponent } from './home-component/menu.component';
 import { ShellComponent } from './home-component/shell.component';
-
+import { TrusteeListComponent } from './Trustee/trustee-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MaterialExampleModule } from 'src/material.module';
+import { CardListComponent } from './card-list/card-list.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { productReducer } from './state/products/product.reducer';
+import { ProductEffects } from './state/products/product.effects';
 
 
 
@@ -71,7 +81,9 @@ import { ShellComponent } from './home-component/shell.component';
     ProductsShellComponent,
     LoginComponent,
     MenuComponent,
-    ShellComponent
+    ShellComponent,
+    TrusteeListComponent,
+    CardListComponent
    
 
     
@@ -84,6 +96,16 @@ import { ShellComponent } from './home-component/shell.component';
     NgbModule,
     ReactiveFormsModule,
     HttpClientInMemoryWebApiModule.forRoot(DBServie),
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatNativeDateModule,
+    MaterialExampleModule,
+    StoreModule.forRoot([]),
+    StoreModule.forFeature('products',productReducer),
+    EffectsModule.forRoot([]),
+    EffectsModule.forFeature(ProductEffects),
+    StoreDevtoolsModule.instrument()
+    
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

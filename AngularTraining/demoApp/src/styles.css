@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 @import "~bootstrap/dist/css/bootstrap.css";
-@import "../node_modules/font-awesome/css/font-awesome.min.css"
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+
+
+/* we use it to make met datepicker that is material ui perfectly as to that of expected */
+
+
+/* @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"; */
+
+
+

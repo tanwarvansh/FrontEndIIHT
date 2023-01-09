@@ -2,37 +2,37 @@ import { Injectable } from "@angular/core";
 
 import { BehaviorSubject, catchError, map, Observable, tap, throwError } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { ITrustee } from "../Trustee/trusteeInteface";
 
 
 
 @Injectable({
     providedIn:'root'
 })
-export class ProductService{
+export class TrusteeService{
     constructor(private http:HttpClient){}
 
-     private url:string='/api/products';
-     products:Product[]=[];
+     private url:string='api/trustees';
+     trustees:ITrustee[]=[];
 
 
-     private selectedProductSource=new BehaviorSubject<Product | null>(null);
+     private selectedTrusteeSource=new BehaviorSubject<ITrustee | null>(null);
 
-     selectedProductChanges$=this.selectedProductSource.asObservable();
+     selectedTrusteeChanges$=this.selectedTrusteeSource.asObservable();
 
-    getProduct():Observable<Product[]>{
-      console.log("hello hiirbfiebrfgk");
-      return this.http.get<Product[]>(`${this.url}`).pipe(
+    getTrustee():Observable<ITrustee[]>{
+      return this.http.get<ITrustee[]>(`${this.url}`).pipe(
         tap(data=> {console.log(data);
-          this.products=data;
+          this.trustees=data;
         }),
         catchError(this.errorHandler)
       );
      
     }
 
-    changeSelectedProduct(selecedProduct:Product | null):void{
-      console.log(selecedProduct);
-      this.selectedProductSource.next(selecedProduct);
+    changeSelectedTrustee(selecedTrustee:ITrustee | null):void{
+      console.log(selecedTrustee);
+      this.selectedTrusteeSource.next(selecedTrustee);
     }
 
 
@@ -51,24 +51,25 @@ export class ProductService{
 
 
 
-    newProduct():Product{
+    newTrustee():ITrustee{
       return{
         id:0,
         name:'',
-        category:Category.Kitchen,
-        price:"",
-        imageUrl:"",
-        rating:0
+        gender:'',
+        countryOfResidence:'',
+        passport:'',
+        issuanceDate:new Date('2023-01-04'),
+        noOfDependents:0
       };
     }
 
 
-    createProduct(product:Product):Observable<Product>{
+    createTrsutee(trustee:ITrustee):Observable<ITrustee>{
       //headers variable to set request headers
      const headers= new HttpHeaders({'Content-Type':'application/json'});
  
          //newProduct spread across product
-       const newProduct={...product,id:null};
+       const newTrustee={...trustee,id:null};
  
  
        //return logic starts here
@@ -76,13 +77,13 @@ export class ProductService{
        //generics method -- IProduct
        //args --3 url , newProduct ,headers
        //this.url -- declared in the class outside the functions
-       return     this.http.post<Product>(this.url,newProduct,{headers})
+       return     this.http.post<ITrustee>(this.url,newTrustee,{headers})
        .pipe(
          tap(data=>{
  
-          console.log('in create new product'+ JSON.stringify(data));
+          console.log('in create new trustee'+ JSON.stringify(data));
           //pushing the new data new Product to the products array
-          this.products.push(data);
+          this.trustees.push(data);
  
          },
          catchError(this.errorHandler)
@@ -91,20 +92,20 @@ export class ProductService{
    }
    //delete  api/events --- delete mapping api/events/1
  
-   deleteProduct(id:number):Observable<{}>{
+   deleteTrustee(id:number):Observable<{}>{
      const headers= new HttpHeaders({'Content-Type':'application/json'});
  
      //@DeleteMapping deleteAll delete url/id  /api/products/111
      const url= `${this.url}/${id}`;
  
-     return this.http.delete<Product>(url,{headers})
+     return this.http.delete<ITrustee>(url,{headers})
      .pipe(
        tap(data=>{
-         console.log('deleted prd'+id);
-        const foundIndex = this.products.findIndex(item=>item.id===id);
+         console.log('deleted trustee'+id);
+        const foundIndex = this.trustees.findIndex(item=>item.id===id);
         //if product id is not found means index returned will be -1
         if(foundIndex > -1)
-        this.products.splice(foundIndex,1);
+        this.trustees.splice(foundIndex,1);
  
  
        },
@@ -131,22 +132,22 @@ export class ProductService{
    //user will modify
    //user will submit  ,this new product data will be used in http put with the id
  
-    updateProduct(product:Product):Observable<Product>{
+    updateTrustee(trustee:ITrustee):Observable<ITrustee>{
      const headers= new HttpHeaders({'Content-Type':'application/json'});
  
      //put http method
-     const url= `${this.url}/${product.id}`;
+     const url= `${this.url}/${trustee.id}`;
  
      //logic to call http put method to update the product on the given url
-     return this.http.put<Product>(url,product, {headers}).pipe(
+     return this.http.put<ITrustee>(url,trustee, {headers}).pipe(
  
-     tap(()=>{console.log('update product'+product.id);
-     const foundIndex =this.products.findIndex(item=>item.id === product.id);
+     tap(()=>{console.log('update product'+trustee.id);
+     const foundIndex =this.trustees.findIndex(item=>item.id === trustee.id);
      if(foundIndex > -1){
-       this.products[foundIndex]=product;
+       this.trustees[foundIndex]=trustee;
          }
      }),
-     map(()=>product),
+     map(()=>trustee),
      catchError(this.errorHandler)
      );
  
@@ -163,23 +164,3 @@ export class ProductService{
  
  }
 
-
-
-
-
-
-
-enum Category{
-    Kitchen='kitchen',
-    Electric='electric',
-    HouseHold='houseHold'
-  }
-  interface Product{
-    id:number;
-    name:string;
-    price:string;
-    imageUrl:string;
-    rating:number,
-    category:Category;
-  }
-  

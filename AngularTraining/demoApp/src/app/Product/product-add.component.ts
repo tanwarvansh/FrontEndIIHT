@@ -1,9 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription, tap } from 'rxjs';
 import { GenericValidator } from '../shared/genericvalidator';
 import { ProductService } from '../shared/product.service';
+import { clearCurrentProduct, createProduct, deleteProduct, updateProduct } from '../state/products/product.actions';
+import { getCurrentProduct } from '../state/products/product.selectors';
 import { Category, Product } from './product.component';
 
 @Component({
@@ -17,24 +20,27 @@ export class ProductAddComponent implements OnInit ,OnDestroy{
   
   
 
-  product:Product|null={
-    id:0,
-    name:"",
-    price:"",
-    imageUrl:"",
+  product:Product|null|undefined={
+    id:1,
+    name:"a",
+    price:"b",
+    imageUrl:"c",
     rating:0,
     category:Category.Kitchen
   };
 
+  // product!:Product|null|undefined;
+
   pageTitle='Edit Product';
   errorMessage='';
+  product$!:Observable<Product|null | undefined> ;
   addProduct!: FormGroup;
   sub!:Subscription;
 
   displayMessage: {[key:string]:string}={};
   private validationMessages!:{[key:string]:{[key:string]:string}};
   private genericValidator!:GenericValidator;
-  constructor(private formBuilder:FormBuilder,private router:Router,private productService:ProductService){
+  constructor(private formBuilder:FormBuilder,private router:Router,private productService:ProductService,private store:Store){
 
   this.validationMessages={
 
@@ -63,23 +69,38 @@ export class ProductAddComponent implements OnInit ,OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 
   ngOnInit(): void {
+    console.log("in add product",this.product);
     
     this.addProduct=this.formBuilder.group({
       id: [],
-      name: ['',[ Validators.required,Validators.minLength(3),Validators.maxLength(10)]],
+      name: ['abc',[ Validators.required,Validators.minLength(3),Validators.maxLength(10)]],
       category:[Category.Kitchen,[Validators.required]],
       price:['',[Validators.required]],
       image:['',[Validators.required]],
       rating:[3,[Validators.required]]
     })
 
-    this.sub=this.productService.selectedProductChanges$.subscribe(selProd=>this.displayProduct(selProd));
-    this.addProduct.valueChanges.
-    subscribe(()=>this.displayMessage=this.genericValidator.processMessages(this.addProduct));
+    console.log("add form created for product",this.addProduct.value);
+
+
+    this.product$ = this.store.select(getCurrentProduct)
+      .pipe(
+        tap(currentProduct => this.displayProduct(currentProduct))
+      );
+
+      this.product$.subscribe(data=>this.product=data);
+
+      this.addProduct.valueChanges.subscribe(
+        ()=>this.displayMessage=
+        this.genericValidator.processMessages(this.addProduct)
+      );
+
+      this.addProduct.valueChanges.subscribe(()=>this.displayMessage=this.genericValidator.processMessages(this.addProduct));
+
   
   }
 
@@ -106,7 +127,7 @@ export class ProductAddComponent implements OnInit ,OnDestroy{
 
 
 
-        displayProduct(productParam:Product |null):void{
+        displayProduct(productParam: Product |null |undefined):void{
 
           this.product = productParam;
           if(this.product){
@@ -149,17 +170,19 @@ export class ProductAddComponent implements OnInit ,OnDestroy{
         const product={...originalProduct,...this.addProduct.value};
 
       if(product.id===0){
-        this.productService.createProduct(product).subscribe(
-          (resp)=>this.productService.changeSelectedProduct(resp),
-          (err)=>this.errorMessage=err
-        );
+        this.store.dispatch(createProduct({product}));
+        // this.productService.createProduct(product).subscribe(
+        //   (resp)=>this.productService.changeSelectedProduct(resp),
+        //   (err)=>this.errorMessage=err
+        // );
 
      }
      else{
 
-      this.productService.updateProduct(product).subscribe(
-       resp=>this.productService.changeSelectedProduct(resp),
-       err=>this.errorMessage=err      );
+      this.store.dispatch(updateProduct({product}));
+      // this.productService.updateProduct(product).subscribe(
+      //  resp=>this.productService.changeSelectedProduct(resp),
+      //  err=>this.errorMessage=err      );
 
      }
       }
@@ -179,23 +202,29 @@ export class ProductAddComponent implements OnInit ,OnDestroy{
 
 
   blur():void{
-    this.displayMessage=this.genericValidator.processMessages(this.addProduct);
+    // this.displayMessage=this.genericValidator.processMessages(this.addProduct);
   
     }
+    
   
     deleteProduct(prod:Product):void{
+
       if(prod && prod.id){
   
         if(confirm(`Are you sure you want to delete ${prod.name} details`)){
   
-          this.productService.deleteProduct(prod.id).subscribe(
-            resp=>this.productService.changeSelectedProduct(null),
-            err=>this.errorMessage=err
-          );
+          this.store.dispatch(deleteProduct({productId:prod.id}));
+          
+          // this.productService.deleteProduct(prod.id).subscribe(
+          //   resp=>this.productService.changeSelectedProduct(null),
+          //   err=>this.errorMessage=err
+          // );
+          // this.router.navigate(['products']);
         }
         else{
           //no need to delete the product
-          this.productService.changeSelectedProduct(null)
+          // this.productService.changeSelectedProduct(null)
+          this.store.dispatch(clearCurrentProduct());
         }
       }
   

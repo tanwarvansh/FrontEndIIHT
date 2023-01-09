@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
 import {InMemoryDbService, RequestInfo} from 'angular-in-memory-web-api';
 import { Observable } from "rxjs";
+import { Todo } from "src/todo/todo.model";
 import { IEvent } from "../event-bootcamp/event";
+import { ITrustee } from "../Trustee/trusteeInteface";
 
 
 @Injectable({
@@ -10,91 +12,101 @@ import { IEvent } from "../event-bootcamp/event";
 export class DBServie implements InMemoryDbService {
 
     createDb() {
-        
-//      const events: IEvent[]=[
-//         {
-//             "id":"101",
-//             "name":"BootCamp",
-//             "date":"2022-12-31",
-//             "time":"16-30-00",
-//             "price":399,
-//             "imageUrl": "#",
-//             "location": {
-//                 "address":"Jai Jai Ram Muhalla",
-//                 "city":"Kasganj",
-//                 "country":"India"
-//                 },
-//             "session" :[
-//                 {
-//                     "id":"10101",
-//                     "name":"Batch 1",
-//                     "presenter":"Ms. Shalu Sharma",
-//                     "duration":"90",
-//                     "level":"Beginner",
-//                     "voters":["Shashwat","Suyash","Harshvardhan","Atharv","Upagya","Tanisha","Madhav","Ojaswini","Arav"]
-                    
-//                 },{
-//                     "id":"10102",
-//                     "name":"Batch 1",
-//                     "presenter":"Ms. Shalu Sharma",
-//                     "duration":"90",
-//                     "level":"Beginner",
-//                     "voters":["Shashwat","Suyash","Harshvardhan","Atharv","Upagya","Tanisha","Madhav","Ojaswini","Arav"]
-                    
-//                 }
-//             ]   
-//         },
-//         {
-//             "id":"101",
-//             "name":"BootCamp",
-//             "date":"2022-12-31",
-//             "time":"16-30-00",
-//             "price":399,
-//             "imageUrl": "#",
-//             "location": {
-//                 "address":"Jai Jai Ram Muhalla",
-//                 "city":"Kasganj",
-//                 "country":"India"
-//                 },
-//             "session" :[
-//                 {
-//                     "id":"10101",
-//                     "name":"Batch 1",
-//                     "presenter":"Ms. Shalu Sharma",
-//                     "duration":"90",
-//                     "level":"Beginner",
-//                     "voters":["Shashwat","Suyash","Harshvardhan","Atharv","Upagya","Tanisha","Madhav","Ojaswini","Arav"]
-                    
-//                 }
-//             ]   
-//         },
-//         {
-//             "id":"101",
-//             "name":"BootCamp",
-//             "date":"2022-12-31",
-//             "time":"16-30-00",
-//             "price":399,
-//             "imageUrl": "#",
-//             "location": {
-//                 "address":"Jai Jai Ram Muhalla",
-//                 "city":"Kasganj",
-//                 "country":"India"
-//                 },
-//             "session" :[
-//                 {
-//                     "id":"10101",
-//                     "name":"Batch 1",
-//                     "presenter":"Ms. Shalu Sharma",
-//                     "duration":"90",
-//                     "level":"Beginner",
-//                     "voters":["Shashwat","Suyash","Harshvardhan","Atharv","Upagya","Tanisha","Madhav","Ojaswini","Arav"]
-                    
-//                 }
-//             ]   
-//         }
-//        ]
 
-//        return {events};
+      const todos:Todo[]=[
+        {id:'111',content:'hello'},
+        {id:'121',content:'Angular'},
+        {id:'131',content:'Angular Ngrx'}
+      ];
+
+
+
+
+        
+     const events: IEvent[]=[
+        {
+            "id":"101",
+            "name":"BootCamp",
+            "date":"2022-12-31",
+            "time":"16-30-00",
+            "price":399,
+            "imageUrl": "#",
+            "location": {
+                "address":"Jai Jai Ram Muhalla",
+                "city":"Kasganj",
+                "country":"India"
+                },
+            "session" :[
+                {
+                    "id":"10101",
+                    "name":"Batch 1",
+                    "presenter":"Ms. Shalu Sharma",
+                    "duration":"90",
+                    "level":"Beginner",
+                    "voters":["Shashwat","Suyash","Harshvardhan","Atharv","Upagya","Tanisha","Madhav","Ojaswini","Arav"]
+                    
+                },{
+                    "id":"10102",
+                    "name":"Batch 1",
+                    "presenter":"Ms. Shalu Sharma",
+                    "duration":"90",
+                    "level":"Beginner",
+                    "voters":["Shashwat","Suyash","Harshvardhan","Atharv","Upagya","Tanisha","Madhav","Ojaswini","Arav"]
+                    
+                }
+            ]   
+        },
+        {
+            "id":"101",
+            "name":"BootCamp",
+            "date":"2022-12-31",
+            "time":"16-30-00",
+            "price":399,
+            "imageUrl": "#",
+            "location": {
+                "address":"Jai Jai Ram Muhalla",
+                "city":"Kasganj",
+                "country":"India"
+                },
+            "session" :[
+                {
+                    "id":"10101",
+                    "name":"Batch 1",
+                    "presenter":"Ms. Shalu Sharma",
+                    "duration":"90",
+                    "level":"Beginner",
+                    "voters":["Shashwat","Suyash","Harshvardhan","Atharv","Upagya","Tanisha","Madhav","Ojaswini","Arav"]
+                    
+                }
+            ]   
+        },
+        {
+            "id":"101",
+            "name":"BootCamp",
+            "date":"2022-12-31",
+            "time":"16-30-00",
+            "price":399,
+            "imageUrl": "#",
+            "location": {
+                "address":"Jai Jai Ram Muhalla",
+                "city":"Kasganj",
+                "country":"India"
+                },
+            "session" :[
+                {
+                    "id":"10101",
+                    "name":"Batch 1",
+                    "presenter":"Ms. Shalu Sharma",
+                    "duration":"90",
+                    "level":"Beginner",
+                    "voters":["Shashwat","Suyash","Harshvardhan","Atharv","Upagya","Tanisha","Madhav","Ojaswini","Arav"]
+                    
+                }
+            ]   
+        }
+       ]
+
+       
 
 let products=[
     {
@@ -139,8 +151,36 @@ let products=[
     }
   ]
 
-return {products};
+
        
+    
+
+
+const trustees:ITrustee[]=[
+
+  {
+    id:1,
+    name:'Vansh',
+    gender:'Male',
+    countryOfResidence:'India',
+    passport:'abchjd12',
+    issuanceDate:new Date('2023-01-04'),
+    noOfDependents:2
+  },
+  {
+    id:2,
+    name:'Raghav',
+    gender:'Male',
+    countryOfResidence:'India',
+    passport:'ABC1234',
+    issuanceDate:new Date('2023-01-04'),
+    noOfDependents:3
+  }
+
+]
+
+return {trustees,todos,products,events};
+
     }
 
 

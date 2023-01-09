@@ -37,6 +37,13 @@ export class MenuComponent implements OnInit{
 
   }
 
+  get isAdmin():boolean{
+    if(this.authService.currentUser){
+      return this.authService.currentUser.isAdmin;
+    }
+    return false;
+  }
+
 
 
 
